@@ -86,7 +86,9 @@
                 </td>
                 <td>
                     <entry-value class="displayedValue" value="result.value"
+                                 ng-if="result.bytesInUse < 4096"
                                  string-only="currentDescriptor.stringOnly" key="result.name" ></entry-value>
+                    <div ng-if="result.bytesInUse >= 4096" class="displayedValue">(Too large to display)</div>
                 </td>
                 <td style="white-space: nowrap">
 

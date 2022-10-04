@@ -89,8 +89,8 @@ angular.module("storageExplorer").controller("StorageCtrl", function ($scope, $r
 
             angular.forEach($scope.results, function (val) {
                 $scope.itemCount++;
-                if($scope.itemCount > 40){
-                    return;
+                if($scope.itemCount > 200){
+                    //return;
                 }
                 storage[$scope.currentType].getBytesInUse(val.name, function (amount) {
                     val.bytesInUse = amount;
