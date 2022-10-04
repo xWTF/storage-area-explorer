@@ -11,8 +11,8 @@ module.exports = function (grunt) {
         },
         bower: {
             install: {
-                options:{
-                    copy:false
+                options: {
+                    copy: false
                 }
             }
         },
@@ -49,13 +49,12 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-zip');
-    grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-bower-task');
 
 
     // Default task(s).
-    grunt.registerTask('default', ['clean', 'karma', 'zip']);
+    grunt.registerTask('default', ['clean', 'zip']);
 
-    grunt.registerTask("ci", ['clean', 'bower','karma', 'zip'])
+    grunt.registerTask("ci", ['clean', 'bower', 'zip'])
 
 };
