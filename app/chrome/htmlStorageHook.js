@@ -1,10 +1,10 @@
 (function (chrome) {
-    if (!chrome.extension) {
+    if (!chrome.runtime) {
         return;
     }
-    var extension = chrome.extension;
+    var runtime = chrome.runtime;
     var storages = {};
-    var port = extension.connect({name: "inspected_tab_"});
+    var port = runtime.connect({name: "inspected_tab_"});
 
     storages['localStorage'] = new StorageArea(window.localStorage);
     storages['sessionStorage'] = new StorageArea(window.sessionStorage);

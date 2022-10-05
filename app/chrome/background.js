@@ -162,10 +162,9 @@ PortManager.prototype.trackTargetPort = function (app, tab, port) {
 };
 
 
-function initializeExtension(runtime, extension, $document, tabs) {
-
+function initializeExtension(runtime, tabs) {
     var portManager = new PortManager();
-    extension.onConnect.addListener(function (port) {
+    runtime.onConnect.addListener(function (port) {
         if (port.name.indexOf("for_tab_") === 0) {
             console.log("Devtools listening for tab ", port.name);
             var tabId = parseInt(port.name.substring("for_tab_".length));
@@ -191,7 +190,7 @@ function initializeExtension(runtime, extension, $document, tabs) {
 
 
     //only invoked by chrome apps
-    extension.onConnectExternal.addListener(function (externalPort) {
+    runtime.onConnectExternal.addListener(function (externalPort) {
         var appName = externalPort.sender.id;
         var tabId = externalPort.sender.tab ? externalPort.sender.tab.id : undefined;
 
@@ -204,30 +203,16 @@ function initializeExtension(runtime, extension, $document, tabs) {
 
     runtime.onMessage.addListener(function (message, sender, response) {
         if (message.action === 'copy') {
-            area.value = message.params[0];
-            area.select();
-            $document.execCommand('copy');
-            response && response();
-            area.value = '';
+            console.error('Not implemented for MV3')
             return;
         }
         if (message.action === 'paste') {
-            area.select();
-            //noinspection JSCheckFunctionSignatures
-            $document.execCommand('paste');
-            response && response(area.value);
-            area.value = '';
+            console.error('Not implemented for MV3');
+            return;
         }
     });
-
-    var area = $document.createElement('textarea');
-    $document.body.appendChild(area);
-
 }
 
-if (chrome.runtime && chrome.extension && document) {
-    initializeExtension(chrome.runtime, chrome.extension, document, chrome.tabs);
+if (chrome.runtime && chrome.extension) {
+    initializeExtension(chrome.runtime, chrome.tabs);
 }
-
-
-
