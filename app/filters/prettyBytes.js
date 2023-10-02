@@ -5,18 +5,18 @@ angular.module('storageExplorer').filter("prettyBytes", function () {
     return function (input) {
         if (input < +(kbSize / 10)) {
             if (input == 1) {
-                return '1byte';
+                return '1 B';
             }
-            return input + 'bytes'
+            return input + ' B'
         }
         var result;
         var type;
         if (input < mbSize) {
             result = (input / kbSize);
-            type = "kb"
+            type = " KB"
         } else {
             result = (input / mbSize);
-            type = "mb"
+            type = " MB"
         }
 
         result = +(result.toFixed(2));

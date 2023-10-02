@@ -80,7 +80,7 @@
             <tr ng-repeat="result in results" class="list-row">
                 <td><span class="valueKey">{{result.name}}</span>
 
-                    <div class="usage" ng-if="!currentDescriptor.stringOnly"> {{result.bytesInUse | prettyBytes}}
+                    <div class="usage" ng-if="!currentDescriptor.stringOnly" ng-class="{error: result.bytesInUse >= 1024 * 1024}"> {{result.bytesInUse | prettyBytes}}
                         <span ng-if="currentType == 'sync'"> / {{meta.sync.QUOTA_BYTES_PER_ITEM | prettyBytes}}</span>
                     </div>
                 </td>
