@@ -11,7 +11,7 @@
             <li ng-repeat="storageDescriptor in storageDescriptors"
                 ng-class="{active:currentType == storageDescriptor.name}"
                 ng-click="setType(storageDescriptor)" ng-if="!storageDescriptor.readonly || stats[storageDescriptor.name].count > 0">
-                <a style="height: 40px">
+                <a>
                     {{storageDescriptor.title}}
                     <div ng-if="storageDescriptor.name == 'local'">
                         <div class="usage" ng-if="stats.local.bytesInUse > 0">
@@ -19,7 +19,7 @@
                             prettyBytes}} / {{meta.local.QUOTA_BYTES | prettyBytes}}
                         </div>
                         <div class="usage" ng-if="stats.local.bytesInUse == 0">
-                            area is empty
+                            (empty)
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                             {{meta.sync.MAX_ITEMS}} items
                         </div>
                         <div class="usage" ng-if="stats.sync.bytesInUse == 0">
-                            area is empty
+                            (empty)
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                             {{stats[storageDescriptor.name].count}} items
                         </div>
                         <div class="usage" ng-if="stats[storageDescriptor.name].count == 0">
-                            area is empty
+                            (empty)
                         </div>
                     </div>
                 </a>
